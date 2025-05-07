@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Operation;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventory\Barang;
+use App\Models\Inventory\Barang_Donasi;
 
 class Subkategori extends Model
 {

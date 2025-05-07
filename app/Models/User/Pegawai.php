@@ -4,6 +4,8 @@ namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Inventory\Jabatan;
+use App\Models\Transaction\Penitipan;
+use App\Models\Communication\Jawaban;
 
 
 class Pegawai extends Model

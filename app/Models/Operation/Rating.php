@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Operation;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventory\Barang;
+use App\Models\User\Penitip;
+use App\Models\User\Pelanggan;
 
 class Rating extends Model
 {

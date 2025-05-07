@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Communication;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Pelanggan;
+use App\Models\User\Pegawai;
 
 class Pertanyaan extends Model
 {

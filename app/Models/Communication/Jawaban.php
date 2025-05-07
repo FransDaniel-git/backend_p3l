@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models\Communication;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Pegawai;
 
 class Jawaban extends Model
 {

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Operation;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Transaction\Penjualan;
+use App\Models\User\Pegawai;
 
 class Pengiriman extends Model
 {

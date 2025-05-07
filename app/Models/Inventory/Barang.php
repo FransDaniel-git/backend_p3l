@@ -1,9 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inventory;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+//penitipan
+use App\Models\Transaction\Penitipan;
+//keranjang barang
+use App\Models\Transaction\KeranjangBarang;
+//subkategori
+use App\Models\Operation\Subkategori;
+//forum
+use App\Models\Communication\Forum;
 
 class Barang extends Model
 {

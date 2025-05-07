@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Operation\Rating;
+use App\Models\Transaction\Penitipan;
+
 
 class Penitip extends Model
 {

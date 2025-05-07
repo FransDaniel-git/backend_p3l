@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventory\Merchandise;
+use App\Models\User\Pelanggan;
 
 class Klaim extends Model
 {

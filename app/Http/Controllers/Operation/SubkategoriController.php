@@ -1,8 +1,8 @@
 <?php
+namespace App\Http\Controllers\Operation;
 
-namespace App\Http\Controllers;
-
-use App\Models\subkategori;
+use App\Http\Controllers\Controller;
+use App\Models\Operation\Subkategori;
 use Illuminate\Http\Request;
 
 class SubkategoriController extends Controller
@@ -10,9 +10,19 @@ class SubkategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // Jika ingin filter subkategori berdasarkan kategori (opsional)
+        if ($request->filled('kategori_id')) {
+            $subkategoris = Subkategori::where('id_kategori', $request->kategori_id)->get();
+        } else {
+            $subkategoris = Subkategori::all();
+        }
+
+        return response()->json([
+            'message' => 'Daftar subkategori berhasil diambil',
+            'data' => $subkategoris,
+        ]);
     }
 
     /**

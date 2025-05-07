@@ -1,8 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Pelanggan;
+use App\Models\User\Penitip;
+//komisi
+use App\Models\Inventory\Komisi;
+//pengambilan
+use App\Models\Operation\Pengambilan;
+//pengiriman
+use App\Models\Operation\Pengiriman;
 
 class Penjualan extends Model
 {

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inventory;
 
 use Illuminate\Database\Eloquent\Model;
+//subkategori
+use App\Models\Operation\Subkategori;
+//donasi_barang
+use App\Models\Transaction\donasi_barang;
 
 class Barang_Donasi extends Model
 {

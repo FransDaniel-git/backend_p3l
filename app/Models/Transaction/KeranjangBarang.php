@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventory\Barang;
 
 class KeranjangBarang extends Model
 {

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventory\Barang;
+use App\Models\User\Penitip;
+use App\Models\Operation\Subkategori;
+use App\Models\User\Pegawai;
 
 class Penitipan extends Model
 {

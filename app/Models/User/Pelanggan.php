@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+//penjualan
+use App\Models\Transaction\Penjualan;
+//pertanyaan
+use App\Models\Communication\Pertanyaan;
+//keranjang
+use App\Models\Transaction\Keranjang;
 class Pelanggan extends Model
 {
     use HasApiTokens, HasFactory;

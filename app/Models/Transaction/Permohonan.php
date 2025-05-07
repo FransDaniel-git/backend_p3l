@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
+//organisasi
+use App\Models\User\Organisasi;
 
 class Permohonan extends Model
 {

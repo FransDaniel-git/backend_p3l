@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inventory;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Pegawai;
+use App\Models\Transaction\Penjualan;
 
 class Komisi extends Model
 {

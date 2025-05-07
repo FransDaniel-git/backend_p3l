@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Kategori;
+namespace App\Http\Controllers\Operation;
+use App\Http\Controllers\Controller;
+//kategori
+use App\Models\Operation\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -12,7 +13,12 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $kategoris = Kategori::all();
+
+        return response()->json([
+            'message' => 'Daftar kategori berhasil diambil',
+            'data' => $kategoris,
+        ]);
     }
 
     /**

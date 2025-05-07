@@ -1,9 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Communication;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+//barang
+use App\Models\Inventory\Barang;
+//pertanyaan
+use App\Models\Communication\Pertanyaan;
+//jawaban
+use App\Models\Communication\Jawaban;
 
 class Forum extends Model
 {

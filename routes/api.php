@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\PegawaiController;
 use App\Http\Controllers\PermohonanController;
-use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DonasiBarangController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\BarangDonasiController;
 use App\Http\Controllers\OrganisasiController;
 use App\Http\Controllers\PenitipController;
 use App\Http\Controllers\Inventory\JabatanController;
+use App\Http\Controllers\Inventory\BarangController;
+use App\Http\Controllers\Operation\KategoriController;
+use App\Http\Controllers\Operation\SubkategoriController;
 
 Route::middleware('auth:api')->group(function() {
     Route::get('/user', [PelangganController::class, 'index']);
@@ -32,6 +34,12 @@ Route::middleware('auth:api')->group(function() {
     //Route::post('/jabatans', [JabatanController::class, 'store']);
     //Route::put('/jabatans/{id}', [JabatanController::class, 'update']);
     //Route::delete('/jabatans/{id}', [JabatanController::class, 'destroy']);
+
+    //Route::get('/barangs', [BarangController::class, 'index']);
+    //Route::get('/barang/{kode_barang}', [BarangController::class, 'getDetail']);
+
+    //Route::get('/kategoris', [KategoriController::class, 'index']);
+    //Route::get('/subkategoris', [SubkategoriController::class, 'index']);
 
     Route::get('/permohonan', [PermohonanController::class, 'index']);
 
@@ -63,3 +71,9 @@ Route::get('/jabatans/{id}', [JabatanController::class, 'show']);
 Route::post('/jabatans', [JabatanController::class, 'store']);
 Route::put('/jabatans/{id}', [JabatanController::class, 'update']);
 Route::delete('/jabatans/{id}', [JabatanController::class, 'destroy']);
+
+Route::get('/barangs', [BarangController::class, 'index']);
+Route::get('/barang/{kode_barang}', [BarangController::class, 'getDetail']);
+
+Route::get('/kategoris', [KategoriController::class, 'index']);
+Route::get('/subkategoris', [SubkategoriController::class, 'index']);

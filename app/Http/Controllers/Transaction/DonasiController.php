@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Donasi;
+use App\Models\Transaction\Donasi;
 
 class DonasiController extends Controller
 {

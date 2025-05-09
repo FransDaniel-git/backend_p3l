@@ -8,11 +8,13 @@ use App\Models\Transaction\Permohonan;
 class Organisasi extends Model
 {
     protected $table = 'organisasis';
+    protected $primaryKey = 'id_organisasi'; // Add this line
+    public $incrementing = false; // Set to false if using string IDs like 'T1'
+    protected $keyType = 'string'; // Set to 'string' if your ID is not numeric
 
     protected $fillable = [
         'id_organisasi',
         'nama',
-        'nama_penerima',
         'email',
         'alamat',
         'verified',

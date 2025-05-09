@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Transaction;
 
-use App\Models\Permohonan;
+use App\Http\Controllers\Controller;
+use App\Models\Transaction\Permohonan;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
 {
     public function index()
     {
-        $permohonans = Permohonan::with('penerima')->get();
+        $permohonans = Permohonan::with('penerima')
+                            ->where('status_permohonan', 0)
+                            ->get();
 
         return response()->json([
-            'message' => 'Daftar permohonan berhasil diambil',
-            'data' => $permohonans
-        ], 200);
+            'status' => 'success',
+            'data' => $permohonans,
+        ]);
     }
 }

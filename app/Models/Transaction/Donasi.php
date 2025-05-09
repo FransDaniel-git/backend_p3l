@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Donasi extends Model
 {
     protected $table = 'donasis';
+    protected $primaryKey = 'id_donasi';
+    public $incrementing = true;
 
     protected $fillable = [
         'id_donasi',

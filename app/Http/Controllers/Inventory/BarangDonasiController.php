@@ -1,32 +1,63 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inventory;
 
+use App\Http\Controllers\Controller;
+use App\Models\Inventory\Barang_Donasi;
+use App\Models\Operation\Subkategori;
 use Illuminate\Http\Request;
-use App\Models\Barang_Donasi;
 
 class BarangDonasiController extends Controller
 {
-    public function updateStatus(Request $request, $id)
+    public function index(Request $request)
     {
-        $request->validate([
-            'status_donasi' => 'required|string'
+        $validated = $request->validate([
+            'search' => 'nullable|string|max:255',
+            'kategori' => 'nullable|integer|exists:kategoris,id_kategori',
+            'subkategori' => 'nullable|integer|exists:subkategoris,id_subkategori',
         ]);
 
-        $barang = Barang_Donasi::find($id);
+        $query = Barang_Donasi::with('subkategori.kategori')->where('status_donasi', 0);
 
-        if (!$barang) {
+        if (!empty($validated['search'])) {
+            $query->where('nama', 'like', '%' . $validated['search'] . '%');
+        }
+
+        if (!empty($validated['kategori'])) {
+            $kategoriId = $validated['kategori'];
+
+            $subkategoriIds = Subkategori::where('id_kategori', $kategoriId)->pluck('id_subkategori');
+
+            $query->whereIn('id_subkategori', $subkategoriIds);
+        }
+
+        if (!empty($validated['subkategori'])) {
+            $query->where('id_subkategori', $validated['subkategori']);
+        }
+
+        $barangDonasis = $query->get();
+
+        return response()->json([
+            'message' => 'Data barang donasi berhasil diambil',
+            'data' => $barangDonasis,
+        ]);
+    }
+
+    public function show($id_barang_donasi)
+    {
+        $barangDonasi = Barang_Donasi::with(['penitip', 'subkategori.kategori'])
+            ->where('id_barang_donasi', $id_barang_donasi)
+            ->first();
+
+        if (!$barangDonasi) {
             return response()->json([
-                'message' => 'Barang donasi tidak ditemukan'
+                'message' => 'Barang donasi tidak ditemukan',
             ], 404);
         }
 
-        $barang->status_donasi = $request->status_donasi;
-        $barang->save();
-
         return response()->json([
-            'message' => 'Status donasi berhasil diperbarui',
-            'data' => $barang
-        ], 200);
+            'message' => 'Data barang donasi berhasil diambil',
+            'data' => $barangDonasi,
+        ]);
     }
 }

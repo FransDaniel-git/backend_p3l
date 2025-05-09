@@ -2,26 +2,30 @@
 
 namespace App\Models\User;
 
+use App\Models\Communication\Pertanyaan;
+use App\Models\Transaction\Keranjang;
+use App\Models\Inventory\Jabatan;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens;
+use App\Models\Transaction\Penjualan;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//penjualan
-use App\Models\Transaction\Penjualan;
-//pertanyaan
-use App\Models\Communication\Pertanyaan;
-//keranjang
-use App\Models\Transaction\Keranjang;
-class Pelanggan extends Model
+class Pelanggan extends Authenticatable
 {
-    use HasApiTokens, HasFactory;
-    protected $table = 'Pelanggans';
+    use HasApiTokens, Notifiable;
+    protected $table = 'pelanggans';
+    protected $primaryKey = 'id_pelanggan';
+    public $incrementing = false; // Jika primary key tidak auto increment
+    protected $keyType = 'string'; // Jika primary key bukan integer
     protected $fillable = [
         'id_pelanggan',
         'nama',
         'email',
         'verified',
+        'id_jabatan',
         'tanggal_lahir',
         'noTelp',
         'poin',
@@ -56,5 +60,10 @@ class Pelanggan extends Model
 
     public function keranjang(){
         return $this->hasOne(Keranjang::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'id_jabatan', 'id_jabatan');
     }
 }

@@ -36,44 +36,50 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'api' => [
-            'driver' => 'sanctum', // Atau 'passport' jika pakai Laravel Passport
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | User Providers
-    |--------------------------------------------------------------------------
-    |
-    | All authentication guards have a user provider, which defines how the
-    | users are actually retrieved out of your database or other storage
-    | system used by the application. Typically, Eloquent is utilized.
-    |
-    | If you have multiple user tables or models you may configure multiple
-    | providers to represent the model / table. These providers may then
-    | be assigned to any extra authentication guards you have defined.
-    |
-    | Supported: "database", "eloquent"
-    |
-    */
-
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    'api' => [
+        'driver' => 'passport',
+        'provider' => 'pegawai', // Default to pegawai, but we'll handle multiple types
     ],
+    'organisasi-api' => [
+        'driver' => 'passport',
+        'provider' => 'organisasi',
+    ],
+    'pelanggan-api' => [
+        'driver' => 'passport',
+        'provider' => 'pelanggan',
+    ],
+    'penitip-api' => [
+        'driver' => 'passport',
+        'provider' => 'penitip',
+    ],
+],
+
+'providers' => [
+    
+    'pegawai' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User\Pegawai::class,
+    ],
+    
+    'organisasi' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User\Organisasi::class,
+    ],
+    
+    'pelanggan' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User\Pelanggan::class,
+    ],
+    
+    'penitip' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User\Penitip::class,
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------

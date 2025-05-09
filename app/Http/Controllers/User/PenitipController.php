@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Penitip;
+use App\Models\User\Penitip;
 
 class PenitipController extends Controller
 {

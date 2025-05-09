@@ -11,12 +11,16 @@ use App\Models\Transaction\donasi_barang;
 class Barang_Donasi extends Model
 {
     protected $table = 'barang_donasis';
+    protected $primaryKey = 'id_barang_donasi'; // Add this line
+    public $incrementing = false; // Set to false if using string IDs like 'B2'
+    protected $keyType = 'string'; // Set to 'string' if your ID is not numeric
 
     protected $fillable = [
         'id_barang_donasi',
         'id_subkategori',
         'id_penitip',
         'gambar',
+        'harga',
         'nama',
         'ukuran',
         'deskripsi',
@@ -37,5 +41,10 @@ class Barang_Donasi extends Model
     public function donasibarang()
     {
         return $this->hasMany(donasi_barang::class, 'id_barang_donasi', 'id_barang_donasi');
+    }
+
+    public function penitip()
+    {
+        return $this->belongsTo(\App\Models\User\Penitip::class, 'id_penitip', 'id_penitip');
     }
 }

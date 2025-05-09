@@ -8,6 +8,8 @@ use App\Models\Inventory\Barang_Donasi;
 class donasi_barang extends Model
 {
     protected $table = 'donasi_barangs';
+    protected $primaryKey = 'id_donasi_barang';
+    public $incrementing = true;
 
     protected $fillable = [
         'id_donasi_barang',
